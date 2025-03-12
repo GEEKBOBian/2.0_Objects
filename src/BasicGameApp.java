@@ -13,6 +13,8 @@
 
 //Graphics Libraries
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.JFrame;
@@ -22,7 +24,7 @@ import javax.swing.JPanel;
 //*******************************************************************************
 // Class Definition Section
 
-public class BasicGameApp implements Runnable {
+public class BasicGameApp implements Runnable, KeyListener {
 
 	//Variable Definition Section
 	//Declare the variables used in the program
@@ -66,9 +68,9 @@ public class BasicGameApp implements Runnable {
 
 		//variable and objects
 		//create (construct) the objects needed for the game and load up
-		astroPic = Toolkit.getDefaultToolkit().getImage("images (1).jpeg");//load the picture
-		astro2Pic = Toolkit.getDefaultToolkit().getImage("hqdefault.jpg");
-		backgroundPic = Toolkit.getDefaultToolkit().getImage("rxad3kdkckyb1.jpg");
+		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.jpg");//load the picture
+		astro2Pic = Toolkit.getDefaultToolkit().getImage("queen-clash-of-clans_jpg_320.jpg");
+		backgroundPic = Toolkit.getDefaultToolkit().getImage("clash-of-clans-bases-2.jpg");
 		astro = new Astronaut(100, 200);
 		astro2 = new Astronaut(200, 600);
 
@@ -97,6 +99,11 @@ public class BasicGameApp implements Runnable {
 
 	public void moveThings() {
 		//calls the move( ) code in the objects
+//		if(astro2.xpos > 500){
+//			astro2.isAlive = false;
+//			System.out.println("oops");
+//		}
+
 		collisions();
 		astro.bounce();
 		astro2.wrap();
@@ -107,6 +114,7 @@ public class BasicGameApp implements Runnable {
 		if(astro.rec.intersects(astro2.rec) && astro.isCrashing == false) {
 			System.out.println("explosion");
 			astro.isCrashing = true;
+			astro2.isAlive = false;
 			astro.dx = -astro.dx;
 			astro.dy = -astro.dy;
 			astro.width = astro.width + 10;
@@ -145,6 +153,8 @@ public class BasicGameApp implements Runnable {
 		canvas.setBounds(0, 0, WIDTH, HEIGHT);
 		canvas.setIgnoreRepaint(true);
 
+		canvas.addKeyListener(this);
+
 		panel.add(canvas);  // adds the canvas to the panel.
 
 		// frame operations
@@ -169,10 +179,28 @@ public class BasicGameApp implements Runnable {
 		g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
 		//draw the image of the astronaut
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		g.drawImage(astro2Pic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
-
+		if(astro2.isAlive == true) {
+			g.drawImage(astro2Pic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
+		}
 		g.dispose();
 
 		bufferStrategy.show();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {//dont use is bad
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("swag");
+		System.out.println(e.getKeyChar());
+		System.out.println(e.getKeyCode());
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+
 	}
 }

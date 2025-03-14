@@ -197,6 +197,37 @@ public class BasicGameApp implements Runnable, KeyListener {
 		System.out.println("swag");
 		System.out.println(e.getKeyChar());
 		System.out.println(e.getKeyCode());
+		//up 38
+		//down 40
+		//left 37
+		//right 39
+		if(e.getKeyCode() == 38) {
+			System.out.println("going up");
+			astro.dy = -5;
+			astro.dx = 0;
+			astro.up = true;
+
+		}
+		if(e.getKeyCode() == 39){
+			System.out.println("going right");
+			astro.dx = 5;
+			astro.dy = 0;
+			astro.right = true;
+
+		}
+		if(e.getKeyCode() == 40){
+			System.out.println("going down");
+			astro.dy = 5;
+			astro.dx = 0;
+			astro.down = true;
+		}
+		if(e.getKeyCode() == 37){
+			System.out.println("going left");
+			astro.dx = -5;
+			astro.dy = 0;
+			astro.left = true;
+		}
+
 	}
 
 	@Override

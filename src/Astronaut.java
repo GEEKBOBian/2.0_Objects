@@ -17,6 +17,10 @@ public class Astronaut {
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
     public Rectangle rec;
     public boolean isCrashing;
+    public boolean up;
+    public boolean down;
+    public boolean left;
+    public boolean right;
 
 
     // METHOD DEFINITION SECTION
@@ -37,6 +41,10 @@ public class Astronaut {
         isAlive = true;
         rec = new Rectangle(xpos, ypos, width, height);
         isCrashing = false;
+        up = false;
+        down = false;
+        left = false;
+        right = false;
 
     } // constructor
 
@@ -49,6 +57,18 @@ public class Astronaut {
     }
 
     public void bounce() {//bounce off east wall
+        if (up== true){
+            dy =-5;
+        }
+        if (down== true){
+            dy = 5;
+        }
+        if (left== true){
+            dx =-5;
+        }
+        if (right== true){
+            dx =5;
+        }
         if (xpos > 900) {
             dx = -dx;
         }

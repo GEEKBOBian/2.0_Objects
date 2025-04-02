@@ -203,28 +203,20 @@ public class BasicGameApp implements Runnable, KeyListener {
 		//right 39
 		if(e.getKeyCode() == 38) {
 			System.out.println("going up");
-			astro.dy = -5;
-			astro.dx = 0;
 			astro.up = true;
 
 		}
 		if(e.getKeyCode() == 39){
 			System.out.println("going right");
-			astro.dx = 5;
-			astro.dy = 0;
 			astro.right = true;
 
 		}
 		if(e.getKeyCode() == 40){
 			System.out.println("going down");
-			astro.dy = 5;
-			astro.dx = 0;
 			astro.down = true;
 		}
 		if(e.getKeyCode() == 37){
 			System.out.println("going left");
-			astro.dx = -5;
-			astro.dy = 0;
 			astro.left = true;
 		}
 
@@ -233,5 +225,21 @@ public class BasicGameApp implements Runnable, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 
+
+		if(e.getKeyCode()==38){
+			astro.up = false;
+
+		}
+		if(e.getKeyCode()==39) {
+			astro.left = false;
+		}
+		if(e.getKeyCode()==40){
+			astro.down = false;
+
+		}
+		if(e.getKeyCode()==37){
+			astro.right = false;
+
+		}
 	}
 }

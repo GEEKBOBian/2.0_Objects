@@ -171,6 +171,25 @@ public class BasicGameApp implements Runnable, KeyListener {
 
 	}
 
+	public MoveStrait{
+		if(e.getKeyCode()==38){
+			astro.up = false;
+
+		}
+		if(e.getKeyCode()==39) {
+			astro.left = false;
+		}
+		if(e.getKeyCode()==40){
+			astro.down = false;
+
+		}
+		if(e.getKeyCode()==37){
+			astro.right = false;
+
+		}
+	}
+
+
 
 	//paints things on the screen using bufferStrategy
 	private void render() {

@@ -69,6 +69,18 @@ public class Astronaut {
         if (right== true){
             dx =5;
         }
+
+        if (up == false && down == false && left == false && right == false){
+
+            dx = 0;
+            dy = 0;
+        }
+        if (up == false && down == false ){
+            dy = 0;
+        }
+        if (left == false && right == false){
+            dx = 0;
+        }
         if (xpos > 900) {
             dx = -dx;
         }
@@ -85,6 +97,8 @@ public class Astronaut {
         ypos = ypos + dy;
 
         rec = new Rectangle(xpos, ypos, width, height);
+
+
     }
 
     public void wrap() {

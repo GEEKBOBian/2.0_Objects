@@ -49,6 +49,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 	private Astronaut astro;
 	private Astronaut astro2;
 
+Astronaut [] astronautsArray = new Astronaut[10];
 
 	// Main method definition
 	// This is the code that runs first and automatically
@@ -74,6 +75,9 @@ public class BasicGameApp implements Runnable, KeyListener {
 		astro = new Astronaut(100, 200);
 		astro2 = new Astronaut(200, 600);
 
+		for(int x = 0; x < astronautsArray.length; x++){
+			astronautsArray[x] = new Astronaut((int)(Math.random()* 900), (int)(Math.random()*600));
+		}
 
 	}// BasicGameApp()
 
@@ -107,6 +111,10 @@ public class BasicGameApp implements Runnable, KeyListener {
 		collisions();
 		astro.bounce();
 		astro2.wrap();
+
+		for(int y=0; y < astronautsArray.length; y++){
+			astronautsArray[y].wrap();
+		}
 
 	}
 
@@ -180,12 +188,19 @@ public class BasicGameApp implements Runnable, KeyListener {
 		g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
 		//draw the image of the astronaut
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		if(astro2.isAlive == true) {
-			g.drawImage(astro2Pic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
+		g.drawImage(astro2Pic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
+
+
+		for(int l = 0; l < astronautsArray.length; l++){
+			g.drawImage(astroPic, astronautsArray[l].xpos, astronautsArray[l].ypos, astro.width, astro.height, null);
 		}
+
 		g.dispose();
 
 		bufferStrategy.show();
+
+
+
 	}
 
 	@Override

@@ -134,6 +134,10 @@ Astronaut [] astronautsArray = new Astronaut[10];
 		}
 		if(!astro.rec.intersects(astro2.rec)) {
 			astro.isCrashing = false;
+
+			if(astronautsArray.intersects(astronautsArray)){
+				astronautsArray.iscrashing = false;
+			}
 		}
 	}
 
